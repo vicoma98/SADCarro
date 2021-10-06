@@ -1,6 +1,14 @@
-const { Z_UNKNOWN } = require("zlib");
+cesta = [];
 
-hola victor;
-cosa Z_UNKNOWN;
-prueba 2;
-pruba 3;
+function addProducto(evento) {
+
+
+}
+
+function remevoProducto(evento) {
+
+}
+
+function tostring() {
+
+}
