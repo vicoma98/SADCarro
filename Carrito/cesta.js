@@ -1,39 +1,44 @@
-const readline = require("readline");
+class Carrito {
 
-const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout,
-});
-
-cesta = [];
-
-console.log("Bienvenido\nDisponemos de estos 3 articulos\n1-Palos\n2-hierros\n3-muelles\n");
-
-rl.question("¿Cual quieres introducir a la cesta?(introduce el nombre)\n", (answer) => {
-
-    addProducto(answer);
-    rl.setPrompt("¿Cual quieres introducir a la cesta?(introduce el nombre)\n");
-    rl.prompt();
-});
-rl.on('line', (input) => {
-    if (input.trim() === 'salir' || input.trim() == 'exit') {
-        tostring();
-        process.exit();
+    constructor(carrito) {
+        this.carrito = [];
     }
-    addProducto(input);
-    rl.setPrompt("¿Cual quieres introducir a la cesta?(introduce el nombre)\n");
-    rl.prompt();
-});
 
-function addProducto(evento) {
-    cesta.push(evento);
+
+    newcarrito() {
+        this.carrito = [];
+        return carrito;
+    }
+
+
+    addProducto(evento) {
+        //comprobar mongodb
+        this.carrito.push(evento);
+    }
+
+    remevoProducto(evento) {
+        sustito = [];
+        veces = 0;
+        for (const id in this.carrito) {
+            if (id === evento && veces == 0) {
+                veces += 1;
+
+            } else {
+                sustito.push(id);
+            }
+        }
+        if (this.carrito.lenght() == sustito.lenght()) {
+            return false;
+        } else {
+            this.carrito = sustito;
+            return true;
+        }
+    }
+
+    tostring() {
+        //console.log(`Tu cesta es ${answer}`);
+        //console.log(cesta);
+        return this.carrito;
+    }
 }
-
-function remevoProducto(evento) {
-
-}
-
-function tostring() {
-    //console.log(`Tu cesta es ${answer}`);
-    console.log(cesta);
-}
+//export { Carrito };
