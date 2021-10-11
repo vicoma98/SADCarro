@@ -1,10 +1,11 @@
-
+import mongoose from 'mongoose';
  var mgdb=require('mongodb');
  var assert = require('assert');
 
   var mongoclient = mgdb.MongoClient;
 
-var url='mongodb://localhost:8100/almacen'
+//var url='mongodb://localhost:8100/almacen'
+var url='mongodb+srv://Prueba:Prueba@cluster0.pr5n4.mongodb.net/test'
 
  mongoclient.connect(url,function (err,db) {
  	assert.equal(err,null);
@@ -14,11 +15,14 @@ var url='mongodb://localhost:8100/almacen'
     	if (err) throw err;
     	console.log("Collection created!");
   	});*/
+  //llamar al creador de colecciones
+  /*  
     insertDocuments(db,function() {
     	if (err) throw err;
     	console.log('success with insertion!');
     	db.close();
     });
+    */
     
 
  });
