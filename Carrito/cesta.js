@@ -15,13 +15,14 @@ class Carrito {
     }
 
     removeProducto(evento) {
+       //falta comprobar que existe ese producto
         const idex = this.carrito.indexOf(evento);
         this.carrito.splice(idex, 1);
     }
 
     tostring() {
-        //console.log(`Tu cesta es ${answer}`);
-        console.log(this.carrito);
+     
+        console.log("Tu cesta actual es: "+this.carrito);
         return this.carrito;
     }
 }
