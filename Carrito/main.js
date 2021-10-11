@@ -17,6 +17,7 @@ const main = async() => {
                 car.addProducto(pr);
                 break;
             case '1':
+                car.tostring();
                 const eliminado = await leerinput('Producto: ');
                 car.removeProducto(eliminado);
                 break;
@@ -37,10 +38,11 @@ const menuOp = [{
     name: 'option',
     message: '¿que desea hacer?',
     choices: [
-        { value: '0', name: "0. salir" },
+        
         { value: '1', name: "1. eliminar" },
         { value: '2', name: "2. anadir" },
-        { value: '3', name: "3. mostrar" }
+        { value: '3', name: "3. mostrar" },
+        { value: '0', name: "0. salir" }
     ]
 }];
 const inqmenu = async() => {
