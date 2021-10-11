@@ -15,5 +15,5 @@ async function conexion(){
     console.log('conectado');
 } 
 
-exports.conexion();
+conexion();
 
