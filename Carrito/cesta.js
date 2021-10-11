@@ -1,9 +1,7 @@
 class Carrito {
-
-    constructor(carrito) {
+    constructor() {
         this.carrito = [];
     }
-
 
     newcarrito() {
         this.carrito = [];
@@ -16,29 +14,16 @@ class Carrito {
         this.carrito.push(evento);
     }
 
-    remevoProducto(evento) {
-        sustito = [];
-        veces = 0;
-        for (const id in this.carrito) {
-            if (id === evento && veces == 0) {
-                veces += 1;
-
-            } else {
-                sustito.push(id);
-            }
-        }
-        if (this.carrito.lenght() == sustito.lenght()) {
-            return false;
-        } else {
-            this.carrito = sustito;
-            return true;
-        }
+    removeProducto(evento) {
+        const idex = this.carrito.indexOf(evento);
+        this.carrito.splice(idex, 1);
     }
 
     tostring() {
         //console.log(`Tu cesta es ${answer}`);
-        //console.log(cesta);
+        console.log(this.carrito);
         return this.carrito;
     }
 }
-//export { Carrito };
+
+module.exports.Carrito = Carrito;
