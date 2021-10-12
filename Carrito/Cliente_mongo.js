@@ -28,7 +28,6 @@ var url='mongodb+srv://Prueba:Prueba@cluster0.pr5n4.mongodb.net/test'
  });
 
 
-
  var insertDocuments = function(db, callback) {
   // Get the documents collection
   var collection = db.collection('products');

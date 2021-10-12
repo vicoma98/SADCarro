@@ -9,7 +9,7 @@ var schema = mongoose.Schema({
 	Nombre: String,  
 	Stock: Number
 });
-//la conexion, aqui dentro hay que meter todo lo que queramos antes de cerrar, las llamasas a las funciones tambien
+//la conexion, aqui dentro hay que meter todo lo que queramos antes de cerrar, las llamadas a las funciones tambien
 mongoose.connect(url,function (err,db) {
 	assert.equal(err,null);
 	console.log('conectado');
@@ -23,27 +23,37 @@ mongoose.connect(url,function (err,db) {
 	insertDocuments(db,function() {
 		if (err) throw err;
 		console.log('Insertar documentos');
+		db.close();
 	});
 
-	buscar(db,function() {
-		if(err) throw err;
-		console.log("buscador");
-	});
 	
-	console.log(Fruta);
-
-
-	//borrar la coleccion y cerrar
-	Fruta.collection.drop();
-	//db.close();
 });
 //final de la conexion
 
+//funcion a la que hay que llamar para añadir el producto comprobando si el stock es 0 o no
+function añadir(Producto){
+	//abrir conexion y buscar el producto
+	mongoose.connect(url,function(err,db){
+		assert.equal(err,null);
+		var db = mongoose.connection
+		var collection = db.collection('Fruta');
+
+		buscar(db,Producto,function() {
+			if(err) {
+				throw err;
+			}
+			console.log(Response)
+			
+		});
+		db.close();
+	})
+	
+}
+
 
 var insertDocuments = function(db, callback) {
-	// Get the documents collection
+	
 	var collection = db.collection('Fruta');
-	// Insert some documents
 	// crear la coleccion, solo deberia hacerse una vez o borrarse 
 	collection.insertMany([
 	{cod : 1,Nombre:'Manzana',Stock:0}, 
@@ -57,10 +67,10 @@ var insertDocuments = function(db, callback) {
 
 
 //este es el buscador 
-var buscar = function(db,callback){
+var buscar = function(db,fruta,callback,){
 	var collection = db.collection('Fruta');
 	collection.find({ 
-		Nombre: /*Aqui tiene que ir la variable nombre*/'Manzana' }, 
+		Nombre: fruta }, //aqui hay que introducir el nombre de la variable 
 		function(err, result) {
 		if (err) return console.log("No existe esa fruta");
 		else{
@@ -71,4 +81,4 @@ var buscar = function(db,callback){
 		
 	});
 }
-
+module.exports={añadir};
