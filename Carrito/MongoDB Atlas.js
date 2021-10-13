@@ -12,7 +12,7 @@ var schema = mongoose.Schema({
 //la conexion, aqui dentro hay que meter todo lo que queramos antes de cerrar, las llamadas a las funciones tambien
 mongoose.connect(url,function (err,db) {
 	assert.equal(err,null);
-	console.log('conectado');
+	
 
 	//Esto es para instanciar la db
 	var db = mongoose.connection
@@ -22,7 +22,7 @@ mongoose.connect(url,function (err,db) {
 
 	insertDocuments(db,function() {
 		if (err) throw err;
-		console.log('Insertar documentos');
+	
 		db.close();
 	});
 
