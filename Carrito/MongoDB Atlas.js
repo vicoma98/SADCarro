@@ -16,12 +16,8 @@ function main() {
     mongoose.connect(url, function(err, db) {
         assert.equal(err, null);
 
-
         //Esto es para instanciar la db
         var db = mongoose.connection
-
-        //definimos el modelo con el schema y me lo quedo en Fruta
-        var Fruta = db.model("Fruta", schema);
 
         insertDocuments(db, function() {
             if (err) throw err;
@@ -40,7 +36,6 @@ function añadir(Producto) {
     mongoose.connect(url, async(err, db) => {
         assert.equal(err, null);
         var db = mongoose.connection
-        var collection = db.collection('Fruta');
 
         const cosa = await frutaM.find({
             Nombre: Producto
@@ -67,9 +62,5 @@ var insertDocuments = function(db, callback) {
 }
 
 
-//este es el buscador 
-var buscar = async(db, fruta, callback, ) => {
-    var collection = db.collection('Fruta');
 
-}
 module.exports = { añadir, main };

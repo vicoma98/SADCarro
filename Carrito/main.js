@@ -25,9 +25,9 @@ const main = async() => {
                 car.tostring();
                 break;
         }
+        if (option !== '0') { await pause(); }
 
 
-        await pause();
     } while (option !== '0');
 
 
@@ -38,7 +38,7 @@ const menuOp = [{
     name: 'option',
     message: '¿que desea hacer?',
     choices: [
-        
+
         { value: '1', name: "1. eliminar" },
         { value: '2', name: "2. anadir" },
         { value: '3', name: "3. mostrar" },
