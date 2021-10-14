@@ -31,18 +31,34 @@ function main() {
 //final de la conexion
 
 //funcion a la que hay que llamar para añadir el producto comprobando si el stock es 0 o no
-function añadir(Producto) {
+   function añadir(Producto) {
     //abrir conexion y buscar el producto
-    mongoose.connect(url, async(err, db) => {
+       const a = mongoose.connect(url, async(err, db) => {
         assert.equal(err, null);
         var db = mongoose.connection
-
         const cosa = await frutaM.find({
             Nombre: Producto
         });
-        console.log(cosa); //<----esto devuelve lo que toca ya
+       
+        //console.log(cosa); //<----esto devuelve lo que toca ya
+        //console.log(cosa.map(cosa => cosa.Stock).sort());
+        if(cosa.map(cosa => cosa.Stock).sort() != 0){
+           console.log("true");
+           ret=true;
+        }
+        else{
+            console.log("false");
+            ret=false;
+        }
         db.close();
-    })
+        //return  result(new Promise(function(resolve, reject){resolve(ret)}));
+        //result=ret;
+        //return callback(result);
+        return ret;
+    });
+    console.log(a);
+    //esto es lo que hay que devolver
+    //return "Hola"; 
 
 }
 
