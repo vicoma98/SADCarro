@@ -3,7 +3,7 @@ const readline = require("readline");
 const inquirer = require('inquirer');
 const { async } = require('rxjs');
 
-
+//metodo main que genera la interfaz con el menú de opciones
 const main = async() => {
     car = new modulo.Carrito();
     let option = '';
@@ -33,6 +33,7 @@ const main = async() => {
 
 
 }
+//menu de opciones
 const menuOp = [{
     type: 'list',
     name: 'option',
@@ -45,6 +46,7 @@ const menuOp = [{
         { value: '0', name: "0. salir" }
     ]
 }];
+//funciones del menu para controlar la entrada por consola
 const inqmenu = async() => {
     console.clear();
 
