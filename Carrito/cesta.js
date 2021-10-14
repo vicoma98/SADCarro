@@ -1,6 +1,6 @@
 //const { añadir } = require("./MongoDB Atlas");
 
-let DB = require('./MongoDB Atlas');
+let DB = require('../BBDD/conexion_bbdd');
 class Carrito {
     constructor() {
         this.carrito = [];
@@ -12,30 +12,27 @@ class Carrito {
     }
 
 
-     async addProducto(evento) {
+    async addProducto(evento) {
         //comprobar mongodb
-        //console.log(evento);
-        const bol = await DB.añadir(evento);
-        console.log("el valor de bol es: "+bol);
-        if(bol){
+        const bol = await DB.run(evento);
+        if (bol) {
             this.carrito.push(evento);
             console.log("Fruta añadida a la cesta");
-        }
-        else{
+        } else {
             console.log("No hay stock de este producto");
         }
-        
-        
+
+
     }
 
     removeProducto(evento) {
-       //falta comprobar que existe ese producto dentro de la lista
+        //falta comprobar que existe ese producto dentro de la lista
         const idex = this.carrito.indexOf(evento);
         this.carrito.splice(idex, 1);
     }
 
     tostring() {
-        console.log("Tu cesta actual es: "+this.carrito);
+        console.log("Tu cesta actual es: " + this.carrito);
         return this.carrito;
     }
 

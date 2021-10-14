@@ -14,7 +14,7 @@ const main = async() => {
         switch (option) {
             case '2':
                 const pr = await leerinput('Producto: ');
-                car.addProducto(pr);
+                await car.addProducto(pr);
                 break;
             case '1':
                 car.tostring();
