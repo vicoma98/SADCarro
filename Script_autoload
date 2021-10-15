@@ -1,0 +1,3 @@
+#!/bin/bash
+
+{ printf "2/nPera/n3/n2/nManzana/n3/n"; } | node Carrito/main.js
