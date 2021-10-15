@@ -11,7 +11,7 @@ var schema = mongoose.Schema({
     Nombre: String,
     Stock: Number
 });
-//la conexion, aqui dentro hay que meter todo lo que queramos antes de cerrar, las llamadas a las funciones tambien
+//conexion e inserccion de los documentos
 function main() {
     mongoose.connect(url, function(err, db) {
         assert.equal(err, null);
@@ -28,9 +28,11 @@ function main() {
 
     });
 }
-//final de la conexion
+
 
 //funcion a la que hay que llamar para añadir el producto comprobando si el stock es 0 o no
+//NO FUNCIONA
+/*
    function añadir(Producto) {
     //abrir conexion y buscar el producto
        const a = mongoose.connect(url, async(err, db) => {
@@ -51,18 +53,14 @@ function main() {
             ret=false;
         }
         db.close();
-        //return  result(new Promise(function(resolve, reject){resolve(ret)}));
-        //result=ret;
-        //return callback(result);
         return ret;
     });
     console.log(a);
-    //esto es lo que hay que devolver
-    //return "Hola"; 
 
 }
+*/
 
-
+//funcion para insertar los documentos 
 var insertDocuments = function(db, callback) {
 
     var collection = db.collection('Fruta');

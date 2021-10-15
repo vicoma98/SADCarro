@@ -2,8 +2,8 @@ const { MongoClient } = require("mongodb");
 const frutaM = require('../models/Fruta');
 const uri = 'mongodb+srv://Prueba:Prueba@cluster0.pby5a.mongodb.net/test'
 
-
-async function run(evento) {
+//funcion conectar y añadir
+async function Buscar(evento) {
     const client = new MongoClient(uri);
     try {
 
@@ -27,4 +27,4 @@ async function run(evento) {
     }
 
 }
-module.exports = { run };
+module.exports = { Buscar };
